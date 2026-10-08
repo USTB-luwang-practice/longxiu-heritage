@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>陇绣非遗 · 鹿望秦川</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+<link rel="stylesheet" href="style.css"/>
+<!-- ★ 新增：调整两个吉祥物外框间距，避免重叠 ★ -->
+<style>
+  .hero-visual {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem; /* 桌面端间距：约48px */
+  }
+  @media (max-width: 768px) {
+    .hero-visual {
+      gap: 1.5rem; /* 移动端适当缩小间距，防止溢出 */
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== 导航栏 ==================== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#home" class="nav-brand">
+      <img class="brand-img" src="鹿望秦川实践团资料/队徽.jpg" alt="队徽" onerror="this.style.display='none'"/>
+      <div>
+        <span class="brand-text">陇绣</span>
+        <span class="brand-sub">鹿望秦川</span>
+      </div>
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <a href="#intro">绣韵千年</a>
+      <a href="#features">陇绣之韵</a>
+      <a href="#stitches">针法技艺</a>
+      <a href="#masters">匠心独运</a>
+      <a href="#gallery">作品精选</a>
+      <a href="#wujue">庆阳五绝</a>
+      <a href="#team">实践团</a>
+      <a class="nav-btn" href="liuyunfan.html">刘云帆展馆</a>
+      <a class="nav-btn" href="caoyuanchun.html">曹苑春展馆</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ==================== Hero 区域 ==================== -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-feather-alt"></i> 庆阳五绝 · 指尖非遗
+      </div>
+      <h1 class="hero-title">
+        <span class="char-big">陇</span>上
+        <span class="char-big">绣</span>
+        <span class="sub">针起线落 · 千年风华</span>
+      </h1>
+      <p class="hero-desc">
+        源自黄土高原深处的刺绣艺术，以针代笔、以线为墨，
+        在方寸素布间勾勒出华夏民族的审美基因与生命礼赞。
+      </p>
+      <div class="hero-actions">
+        <a href="#intro" class="btn btn-primary">
+          <i class="fas fa-arrow-down"></i> 探索陇绣
+        </a>
+        <a href="#team" class="btn btn-ghost">
+          <i class="fas fa-users"></i> 鹿望秦川实践团
+        </a>
+      </div>
+      <div class="hero-numbers">
+        <div class="num-item">
+          <span class="num-value">三千</span>
+          <span class="num-label">年传承历史</span>
+        </div>
+        <div class="num-item">
+          <span class="num-value">非遗</span>
+          <span class="num-label">省级名录</span>
+        </div>
+        <div class="num-item">
+          <span class="num-value">庆阳</span>
+          <span class="num-label">五绝之一</span>
+        </div>
+        <div class="num-item">
+          <span class="num-value">七十</span>
+          <span class="num-label">余种针法</span>
+        </div>
+      </div>
+    </div>
+    <!-- 双吉祥物展示 -->
+    <div class="hero-visual">
+      <div class="visual-ring">
+        <img src="鹿望秦川实践团资料/吉祥物鹿小陇.jpg" alt="鹿小陇" onerror="this.style.display='none'"/>
+      </div>
+      <div class="visual-ring">
+        <img src="鹿望秦川实践团资料/吉祥物鹿小甘.jpg" alt="鹿小甘" onerror="this.style.display='none'"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 绣韵千年 ==================== -->
+<section class="section section-alt" id="intro">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">CHANGXIU · ICH</div>
+      <h2>绣韵千年</h2>
+      <p class="subtitle">黄土高原上的指尖传奇</p>
+    </div>
+    <div class="intro-grid">
+      <div class="image-frame">
+        <img src="曹苑春/dongfang_weixiao.jpg" alt="陇绣作品"/>
+      </div>
+      <div class="intro-text">
+        <h3>陇绣——<br/>黄土地孕育的艺术之花</h3>
+        <p>
+          陇绣，又称庆阳刺绣，是甘肃省庆阳市最具代表性的传统美术类非物质文化遗产。
+          它深深扎根于黄土高原的农耕文明，融合了周秦文化的古朴厚重与丝路文化的多元交融，
+          历经千年沉淀，形成了独具一格的刺绣艺术体系。
+        </p>
+        <p>
+          陇绣之美，在于其浓烈而不失和谐的色彩、饱满而不失灵动的构图、丰富而不失章法的针技。
+          每一幅作品都是陇原儿女对自然的礼赞、对生活的热爱、对美好的祈愿。
+        </p>
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="era">黄帝时期</span>庆阳相传为黄帝活动区域，刺绣萌芽于先民服饰纹样
+          </div>
+          <div class="timeline-item">
+            <span class="era">商周时期</span>北豳之地的刺绣承袭周礼，融入礼制与祭祀文化
+          </div>
+          <div class="timeline-item">
+            <span class="era">秦汉至唐</span>丝绸之路贯通陇东，陇绣吸纳西域纹样与技法
+          </div>
+          <div class="timeline-item">
+            <span class="era">宋金元明</span>民间刺绣蓬勃发展，庆阳香包绣制闻名陇上
+          </div>
+          <div class="timeline-item">
+            <span class="era">2006年</span>庆阳香包绣制列入甘肃省非物质文化遗产名录
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 陇绣之韵 ==================== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">THE ESSENCE</div>
+      <h2>陇绣之韵</h2>
+      <p class="subtitle">一针一线见天地</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon-wrap"><i class="fas fa-palette"></i></div>
+        <h4>浓烈色彩</h4>
+        <p>大红、深绿、明黄为主调<br/>对比鲜明而不失和谐<br/>尽显黄土高原的豪放热情</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><i class="fas fa-grip-lines"></i></div>
+        <h4>丰富针法</h4>
+        <p>齐针、套针、打籽、锁绣<br/>等数十种针法交替运用<br/>层次分明，纹理生动</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><i class="fas fa-shapes"></i></div>
+        <h4>吉祥纹样</h4>
+        <p>鱼戏莲、凤穿牡丹、麒麟送子<br/>传统图案寄寓着<br/>农耕民族的美好祝愿</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-wrap"><i class="fas fa-heart"></i></div>
+        <h4>活态传承</h4>
+        <p>从香包、肚兜到挂件、屏风<br/>融入日常生活的陇绣<br/>在时代演进中延续生命力</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 针法技艺 ==================== -->
+<section class="section section-stitches" id="stitches">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">STITCHING TECHNIQUES</div>
+      <h2>针法技艺</h2>
+      <p class="subtitle">十类绣法 · 各显神通 · 匠心入微</p>
+    </div>
+    <p class="stitches-intro">
+      陇绣技法博大精深，涵盖铺绣、箔绣、堆绣、雕绣、裰绣、贴绣、挑花、盘金、钉线等十类绣法。
+      其中破线绣、合线绣、包绣、拼贴浮雕绣、打籽绣等典型技法最具代表性。
+    </p>
+    <div class="stitches-grid">
+      <div class="stitch-card">
+        <div class="stitch-icon"><i class="fas fa-cut"></i></div>
+        <div class="stitch-info">
+          <h4>破线绣</h4>
+          <span class="stitch-tag">精细入微</span>
+          <p>将丝线剖解为原始单线进行刺绣，线条细若游丝，适合表现细腻的花鸟翎毛与人物面部，是陇绣中最考验功力的技法之一。</p>
+        </div>
+      </div>
+      <div class="stitch-card">
+        <div class="stitch-icon"><i class="fas fa-circle-notch"></i></div>
+        <div class="stitch-info">
+          <h4>打籽绣</h4>
+          <span class="stitch-tag">颗粒质感</span>
+          <p>将绣线在针上绕圈后刺入布面，形成粒状小结，绣面密布均匀颗粒，富有立体感与触感，常用于花蕊、果实等图案。</p>
+        </div>
+      </div>
+      <div class="stitch-card">
+        <div class="stitch-icon"><i class="fas fa-layer-group"></i></div>
+        <div class="stitch-info">
+          <h4>拼贴浮雕绣</h4>
+          <span class="stitch-tag">立体饱满</span>
+          <p>集剪贴、垫衬、刺绣于一体，以多层布料叠加缝制，打造浮雕般的高低起伏，造型饱满灵动，尤以虎头、金瓜等立体造型著称。</p>
+        </div>
+      </div>
+      <div class="stitch-card">
+        <div class="stitch-icon"><i class="fas fa-gift"></i></div>
+        <div class="stitch-info">
+          <h4>包绣</h4>
+          <span class="stitch-tag">层叠造形</span>
+          <p>以纸片或布片为模，用针线包裹形成独特层次，边缘清晰利落，适合表现几何纹样与建筑图案，是陇绣构图的常用技法。</p>
+        </div>
+      </div>
+      <div class="stitch-card">
+        <div class="stitch-icon"><i class="fas fa-link"></i></div>
+        <div class="stitch-info">
+          <h4>合线绣</h4>
+          <span class="stitch-tag">淳厚质朴</span>
+          <p>将多股丝线合成一股进行绣制，线迹厚重饱满，质感醇厚，表现出黄土高原特有的粗犷与豪放之美，常用于大幅作品。</p>
+        </div>
+      </div>
+      <div class="stitch-card">
+        <div class="stitch-icon"><i class="fas fa-feather-alt"></i></div>
+        <div class="stitch-info">
+          <h4>抢针·齐针</h4>
+          <span class="stitch-tag">基础功夫</span>
+          <p>齐针为平绣之基，线条整齐均匀；抢针分层递进、色彩渐次过渡。二者交替运用，层次分明，是陇绣最核心的基础针法。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 匠心独运 ==================== -->
+<section class="section section-alt" id="masters">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">MASTER ARTISANS</div>
+      <h2>匠心独运</h2>
+      <p class="subtitle">以针为笔 · 以线为墨 · 绣出陇原万象</p>
+    </div>
+    <div class="masters-grid">
+      <!-- 刘云帆 -->
+      <a href="liuyunfan.html" class="master-card">
+        <div class="card-img">
+          <img src="刘云帆/双面绣《一气化三清》.jpg" alt="刘云帆作品·双面绣《一气化三清》"/>
+          <div class="img-overlay"><span>进入展馆</span></div>
+        </div>
+        <div class="card-body">
+          <h4>刘云帆</h4>
+          <span class="role">陇绣传承人</span>
+          <p>深耕陇绣数十载，将传统技法与现代审美融合，作品多次入选国家级展览，每一幅都凝聚着对陇绣的执着与敬畏。</p>
+          <span class="card-link">进入展馆 <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+      <!-- 曹苑春 -->
+      <a href="caoyuanchun.html" class="master-card">
+        <div class="card-img">
+          <img src="曹苑春2/7efd32b2e5d5e1e6e6ffab89ff3eb611.jpg" alt="曹苑春作品"/>
+          <div class="img-overlay"><span>进入展馆</span></div>
+        </div>
+        <div class="card-body">
+          <h4>曹苑春</h4>
+          <span class="role">陇绣艺术家</span>
+          <p>以女性独有的细腻感悟陇绣之美，擅长花鸟鱼虫题材，针法灵动飘逸，作品既有传统韵味又不失当代审美。</p>
+          <span class="card-link">进入展馆 <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 作品精选 ==================== -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">GALLERY</div>
+      <h2>作品精选</h2>
+      <p class="subtitle">方寸之间见乾坤 · 点击放大欣赏</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-divider">刘云帆 · 作品精选</div>
+      <div class="gallery-item" onclick="openLightbox('刘云帆/210c1b8fcd6256d3312f5ef10e6d1bde.jpg')">
+        <img src="刘云帆/210c1b8fcd6256d3312f5ef10e6d1bde.jpg" alt="刘云帆作品"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('刘云帆/07e45645b5d063192dcfd592cf3ef52e.jpg')">
+        <img src="刘云帆/07e45645b5d063192dcfd592cf3ef52e.jpg" alt="刘云帆作品"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('刘云帆/f3c068ac264e648c337a8715e7a6d917.jpg')">
+        <img src="刘云帆/f3c068ac264e648c337a8715e7a6d917.jpg" alt="刘云帆作品"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('刘云帆/双面绣《一气化三清》.jpg')">
+        <img src="刘云帆/双面绣《一气化三清》.jpg" alt="刘云帆作品·双面绣一气化三清"/>
+      </div>
+      <div class="gallery-divider">曹苑春 · 作品精选</div>
+      <div class="gallery-item" onclick="openLightbox('曹苑春/3465c6c9e9c55e4cffe49a627ac8e364.jpg')">
+        <img src="曹苑春/3465c6c9e9c55e4cffe49a627ac8e364.jpg" alt="曹苑春作品"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('曹苑春/dongfang_weixiao.jpg')">
+        <img src="曹苑春/dongfang_weixiao.jpg" alt="曹苑春作品·东方微笑"/>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('曹苑春3/fbc092edab787bf67db975b652a8d7f6.jpg')">
+        <img src="曹苑春3/fbc092edab787bf67db975b652a8d7f6.jpg" alt="曹苑春作品"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 庆阳五绝 ==================== -->
+<section class="section section-alt" id="wujue">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">QINGYANG WUJUE</div>
+      <h2>庆阳五绝</h2>
+      <p class="subtitle">黄土高原的五颗文化明珠 · 陇绣为其一</p>
+    </div>
+    <div class="wujue-grid">
+      <div class="wujue-card">
+        <div class="wujue-icon-wrap">
+          <i class="fas fa-gem"></i>
+        </div>
+        <h4>香包</h4>
+        <p>国家级非物质文化遗产，以丝线绣制、内填香草，端午佩戴驱瘟避疫，庆阳被誉为"中国香包刺绣之乡"。</p>
+      </div>
+      <div class="wujue-card highlight">
+        <div class="wujue-icon-wrap">
+          <i class="fas fa-paint-brush"></i>
+        </div>
+        <h4>陇绣</h4>
+        <p>甘肃刺绣的简称，由陇东（庆阳）、陇右（天水、陇南）、陇中（定西、兰州）、甘南临夏及河西刺绣共同构成。其中庆阳刺绣以香包实用品刺绣见长，针法古朴率真、色彩浓烈奔放，承袭周秦古韵。</p>
+      </div>
+      <div class="wujue-card">
+        <div class="wujue-icon-wrap">
+          <i class="fas fa-cut"></i>
+        </div>
+        <h4>剪纸</h4>
+        <p>以刀代笔、以纸为媒，庆阳剪纸粗犷豪放、古朴稚拙，被誉为"农耕文明的活化石"，入选人类非物质文化遗产。</p>
+      </div>
+      <div class="wujue-card">
+        <div class="wujue-icon-wrap">
+          <i class="fas fa-theater-masks"></i>
+        </div>
+        <h4>道情皮影</h4>
+        <p>国家级非遗，环县道情皮影以牛皮雕刻、借灯显影，唱腔苍凉悠远，是中国皮影戏的重要流派之一。</p>
+      </div>
+      <div class="wujue-card">
+        <div class="wujue-icon-wrap">
+          <i class="fas fa-music"></i>
+        </div>
+        <h4>陇东民歌</h4>
+        <p>甘肃省非遗，曲调高亢嘹亮、质朴深情，《绣金匾》《军民大生产》等经典曲目传唱全国。</p>
+      </div>
+    </div>
+    <p class="wujue-note">
+      庆阳被中国民俗学会命名为"香包刺绣之乡""民间剪纸之乡""皮影之乡""窑洞民居之乡""荷花舞之乡"等十余项称号，
+      被文化部命名为"全国文化产业示范基地"。
+    </p>
+  </div>
+</section>
+
+<!-- ==================== 鹿望秦川实践团 ==================== -->
+<section class="section section-ink" id="team">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">OUR TEAM</div>
+      <h2>鹿望秦川</h2>
+      <p class="subtitle">北京科技大学 · 社会实践团</p>
+    </div>
+    <div class="team-block">
+      <div class="team-brand">
+        <img class="emblem" src="鹿望秦川实践团资料/队徽.jpg" alt="队徽"/>
+        <h3>鹿望秦川</h3>
+        <p class="school">北京科技大学</p>
+        <p class="motto">"鹿鸣秦川，绣韵千年<br/>让非遗在新时代绽放光彩"</p>
+      </div>
+      <div class="team-content">
+        <h4>我们与陇绣的故事</h4>
+        <p>
+          我们是北京科技大学鹿望秦川实践团。怀揣着对中华优秀传统文化的敬意与热忱，
+          我们跨越千里，深入甘肃庆阳——陇绣的发源地。在这片厚重的黄土地上，
+          我们走访传承人、记录针法技艺、拍摄影像资料，用青年的视角重新审视这一古老的艺术形式。
+        </p>
+        <p>
+          陇绣不应该只是博物馆里的展品，它应该是活着的文化。我们希望通过这个网站，
+          让更多人看见陇绣的美、了解陇绣的故事、加入到保护与传承的队伍中来。
+        </p>
+        <div class="tag-row">
+          <span>非遗保护</span><span>陇绣文化</span><span>青年力量</span>
+          <span>文化自信</span><span>乡村振兴</span><span>薪火相传</span>
+        </div>
+        <div class="action-cards">
+          <div class="action-card">
+            <i class="fas fa-map-marked-alt"></i>
+            <h5>实地调研</h5>
+            <small>深入庆阳走访</small>
+          </div>
+          <div class="action-card">
+            <i class="fas fa-comments"></i>
+            <h5>对话传承</h5>
+            <small>面对面交流</small>
+          </div>
+          <div class="action-card">
+            <i class="fas fa-camera-retro"></i>
+            <h5>影像记录</h5>
+            <small>定格精彩瞬间</small>
+          </div>
+          <div class="action-card">
+            <i class="fas fa-bullhorn"></i>
+            <h5>宣传推广</h5>
+            <small>走向广阔舞台</small>
+          </div>
+        </div>
+        <!-- 社交媒体二维码 -->
+        <div class="qr-section">
+          <h5><i class="fas fa-qrcode"></i> 关注我们</h5>
+          <p>扫描下方二维码，关注鹿望秦川实践团官方账号，获取更多陇绣非遗资讯与活动动态</p>
+          <div class="qr-img-wrap">
+            <img src="鹿望秦川实践团资料/快手、抖音、公众号以及小红书的二维码.jpg" alt="鹿望秦川实践团社交媒体二维码"/>
+          </div>
+          <div class="qr-labels">
+            <span><i class="fas fa-video"></i> 快手</span>
+            <span><i class="fab fa-tiktok"></i> 抖音</span>
+            <span><i class="fab fa-weixin"></i> 公众号</span>
+            <span><i class="fas fa-book-open"></i> 小红书</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 金句 ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="quote-block">
+      <span class="quote-mark">&ldquo;</span>
+      <blockquote>
+        文化是一个国家、一个民族的灵魂。<br/>
+        文化兴则国运兴，文化强则民族强。
+      </blockquote>
+      <cite>让非物质文化遗产绽放更加迷人的光彩</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 页脚 ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>陇绣非遗</h4>
+        <p>北京科技大学鹿望秦川实践团出品。<br/>致力于陇绣非物质文化遗产的保护、传承与推广。</p>
+        <div class="footer-social">
+          <a href="#" aria-label="微博"><i class="fab fa-weibo"></i></a>
+          <a href="#" aria-label="微信"><i class="fab fa-weixin"></i></a>
+          <a href="#" aria-label="B站"><i class="fab fa-bilibili"></i></a>
+          <a href="#" aria-label="抖音"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>快速导航</h5>
+        <ul>
+          <li><a href="#intro">绣韵千年</a></li>
+          <li><a href="#features">陇绣之韵</a></li>
+          <li><a href="#stitches">针法技艺</a></li>
+          <li><a href="#masters">匠心独运</a></li>
+          <li><a href="#gallery">作品精选</a></li>
+          <li><a href="#wujue">庆阳五绝</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>传承人展馆</h5>
+        <ul>
+          <li><a href="liuyunfan.html">刘云帆作品</a></li>
+          <li><a href="caoyuanchun.html">曹苑春作品</a></li>
+          <li><a href="#">更多传承人</a></li>
+          <li><a href="#">传承故事</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>关于我们</h5>
+        <ul>
+          <li><a href="#team">实践团简介</a></li>
+          <li><a href="#">北京科技大学</a></li>
+          <li><a href="#">联系我们</a></li>
+          <li><a href="#">版权声明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 鹿望秦川实践团 · 北京科技大学 · 陇绣非遗宣传网站
+    </div>
+  </div>
+</footer>
+
+<!-- 回到顶部 -->
+<button class="back-top" id="backTop" aria-label="回到顶部"><i class="fas fa-arrow-up"></i></button>
+
+<!-- 灯箱 -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="close" aria-label="关闭">&times;</button>
+  <img src="" alt="作品大图" id="lightboxImg"/>
+</div>
+
+<!-- ==================== JavaScript ==================== -->
+<script>
+// 汉堡菜单
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navMenu').classList.toggle('open');
+});
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navMenu').classList.remove('open');
+  });
+});
+
+// 导航滚动阴影
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 500);
+});
+
+// 回到顶部
+document.getElementById('backTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// 灯箱
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// 滚动入场动画
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.feature-card, .stitch-card, .master-card, .gallery-item, .wujue-card, .action-card, .timeline-item').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'all 0.65s cubic-bezier(0.25,0.46,0.45,0.94) ' + (i * 0.06) + 's';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>

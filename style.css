@@ -1,0 +1,1774 @@
+/* ============================================
+   陇绣非遗 · 鹿望秦川 — 主样式表
+   设计理念：水墨丹青 · 古韵新风
+   ============================================ */
+
+/* ----- 字体引入 ----- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=ZCOOL+XiaoWei&family=Ma+Shan+Zheng&display=swap');
+
+/* ----- CSS 变量 ----- */
+:root {
+  --ink: #1a1410;
+  --ink-light: #3d3228;
+  --ink-wash: #8c7b6b;
+  --paper: #f7f2e8;
+  --paper-dark: #ebe3d3;
+  --vermillion: #c23b2a;
+  --vermillion-light: #e8553d;
+  --gold: #b8944b;
+  --gold-light: #d4b96a;
+  --jade: #5b7a6a;
+  --jade-light: #7a9e8b;
+  --cream: #fdfaf4;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 12px rgba(26,20,16,0.06);
+  --shadow-md: 0 8px 32px rgba(26,20,16,0.10);
+  --shadow-lg: 0 16px 48px rgba(26,20,16,0.14);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ----- 全局重置 ----- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Noto Serif SC', 'Georgia', '宋体', 'SimSun', serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.85;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ============================================
+   装饰纹样 — CSS 纯绘制
+   ============================================ */
+
+/* 云纹 SVG 背景 */
+.pattern-cloud {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.04;
+}
+
+/* 回纹边框 */
+.border-meander {
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px, var(--gold) 4px,
+    transparent 4px, transparent 8px,
+    var(--gold) 8px, var(--gold) 10px,
+    transparent 10px, transparent 14px
+  );
+  opacity: 0.4;
+}
+
+/* 印章样式 */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--vermillion);
+  color: var(--vermillion);
+  font-weight: 900;
+  padding: 8px 18px;
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+  position: relative;
+  transform: rotate(-2deg);
+  font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+}
+.seal::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--vermillion);
+  opacity: 0.5;
+}
+
+/* 分隔装饰线 */
+.divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.divider-ornament::before,
+.divider-ornament::after {
+  content: '';
+  flex: 1;
+  max-width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.divider-ornament i {
+  color: var(--gold);
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* ============================================
+   导航栏
+   ============================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(253, 250, 244, 0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(184, 148, 75, 0.18);
+  transition: all 0.4s var(--ease);
+}
+.navbar.scrolled {
+  box-shadow: 0 4px 24px rgba(26,20,16,0.08);
+  border-bottom-color: rgba(184, 148, 75, 0.35);
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-brand .brand-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+}
+.nav-brand .brand-text {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 3px;
+}
+.nav-brand .brand-sub {
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 4px;
+  display: block;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav-menu a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink-light);
+  letter-spacing: 1px;
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.3s;
+}
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--gold);
+  transition: width 0.35s var(--ease);
+}
+.nav-menu a:hover { color: var(--vermillion); }
+.nav-menu a:hover::after { width: 100%; }
+
+.nav-menu .nav-btn {
+  background: var(--vermillion);
+  color: #fff !important;
+  padding: 7px 20px !important;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+.nav-menu .nav-btn::after { display: none; }
+.nav-menu .nav-btn:hover {
+  background: var(--gold);
+  color: var(--ink) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(184,148,75,0.35);
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* ============================================
+   Hero 区域 — 水墨丹青
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(175deg, #1a1410 0%, #2c2018 30%, #3d2b1e 60%, #4a3020 100%);
+}
+
+/* 水墨晕染效果 */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%; left: -10%;
+  background:
+    radial-gradient(ellipse 600px 500px at 15% 20%, rgba(184,148,75,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 400px at 85% 60%, rgba(194,59,42,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 300px at 50% 90%, rgba(90,120,100,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 300px 400px at 70% 15%, rgba(212,185,106,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* 水墨纹理层 */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* 左侧文字 */
+.hero-content {
+  color: #fff;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  border: 1px solid rgba(212,185,106,0.5);
+  border-radius: 40px;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--gold-light);
+  margin-bottom: 28px;
+}
+.hero-badge i { font-size: 0.7rem; }
+
+.hero-title {
+  font-size: 4.2rem;
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: 6px;
+  margin-bottom: 6px;
+}
+.hero-title .char-big {
+  font-size: 6rem;
+  color: var(--gold);
+  display: inline-block;
+  font-family: 'Ma Shan Zheng', 'ZCOOL XiaoWei', 'Noto Serif SC', cursive;
+  letter-spacing: 0;
+  margin: 0 4px;
+}
+.hero-title .sub {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 400;
+  letter-spacing: 10px;
+  color: rgba(255,255,255,0.75);
+  margin-top: 6px;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.65);
+  max-width: 440px;
+  margin: 24px 0 32px;
+  letter-spacing: 1px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.4s var(--ease);
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--ink);
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(184,148,75,0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  background: rgba(184,148,75,0.1);
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+/* 右侧视觉 */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-visual .visual-ring {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: gentleFloat 7s ease-in-out infinite;
+}
+
+.hero-visual .visual-ring::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2px dashed rgba(212,185,106,0.2);
+  animation: spinSlow 40s linear infinite;
+}
+
+.hero-visual .visual-ring::after {
+  content: '';
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,185,106,0.1);
+  animation: spinSlow 30s linear infinite reverse;
+}
+
+.hero-visual img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(212,185,106,0.35);
+  box-shadow: 0 0 80px rgba(184,148,75,0.15);
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Hero 底部数据 */
+.hero-numbers {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.hero-numbers .num-item {
+  text-align: center;
+}
+.hero-numbers .num-value {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+.hero-numbers .num-label {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 2px;
+  margin-top: 6px;
+}
+
+/* ============================================
+   区块标题
+   ============================================ */
+.section {
+  padding: 80px 0;
+}
+.section-alt {
+  background: var(--white);
+}
+.section-ink {
+  background: linear-gradient(180deg, #1a1410, #2c2018);
+  color: #fff;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-header .eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.section-header h2 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 6px;
+  position: relative;
+  display: inline-block;
+}
+.section-ink .section-header h2 { color: #fff; }
+.section-header h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--gold);
+  margin: 14px auto 0;
+  border-radius: 2px;
+}
+.section-header .subtitle {
+  color: var(--ink-wash);
+  margin-top: 10px;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+}
+.section-ink .section-header .subtitle { color: rgba(255,255,255,0.55); }
+
+/* ============================================
+   绣韵千年 — 介绍区
+   ============================================ */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.intro-grid .image-frame {
+  background: var(--paper);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(184,148,75,0.12);
+  position: sticky;
+  top: 100px;
+}
+.intro-grid .image-frame img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.intro-text h3 {
+  font-size: 1.8rem;
+  color: var(--ink);
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+.intro-text p {
+  font-size: 1rem;
+  color: var(--ink-light);
+  margin-bottom: 14px;
+  line-height: 1.9;
+}
+
+/* 时间线 */
+.timeline {
+  margin-top: 24px;
+  position: relative;
+  padding-left: 20px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), var(--vermillion-light), var(--gold));
+  border-radius: 2px;
+}
+.timeline-item {
+  position: relative;
+  padding: 10px 0 10px 28px;
+  font-size: 0.92rem;
+  color: var(--ink-light);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 15px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--gold);
+  background: var(--white);
+  border-radius: 50%;
+}
+.timeline-item .era {
+  font-weight: 700;
+  color: var(--vermillion);
+  margin-right: 6px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   特色卡片
+   ============================================ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 40px 24px 32px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s var(--ease);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.5s var(--ease);
+}
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(184,148,75,0.2);
+}
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-card .icon-wrap {
+  width: 64px; height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 16%, rgba(184,148,75,0.2) 0, rgba(184,148,75,0.2) 2.5px, transparent 2.5px),
+    radial-gradient(circle at 50% 84%, rgba(184,148,75,0.2) 0, rgba(184,148,75,0.2) 2.5px, transparent 2.5px),
+    radial-gradient(circle at 16% 50%, rgba(184,148,75,0.2) 0, rgba(184,148,75,0.2) 2.5px, transparent 2.5px),
+    radial-gradient(circle at 84% 50%, rgba(184,148,75,0.2) 0, rgba(184,148,75,0.2) 2.5px, transparent 2.5px),
+    linear-gradient(135deg, var(--paper), var(--paper-dark));
+  font-size: 1.6rem;
+  color: var(--vermillion);
+  transition: 0.4s;
+  position: relative;
+  box-shadow:
+    0 0 0 5px rgba(184,148,75,0.05),
+    inset 0 0 0 1.5px rgba(184,148,75,0.1);
+}
+/* 圆圈外围装饰环 */
+.feature-card .icon-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1px dashed rgba(184,148,75,0.12);
+  pointer-events: none;
+  transition: 0.4s;
+}
+.feature-card:hover .icon-wrap::before {
+  border-color: rgba(194,59,42,0.2);
+  transform: rotate(45deg);
+}
+.feature-card:hover .icon-wrap {
+  background:
+    radial-gradient(circle at 50% 16%, rgba(255,255,255,0.35) 0, rgba(255,255,255,0.35) 2.5px, transparent 2.5px),
+    radial-gradient(circle at 50% 84%, rgba(255,255,255,0.35) 0, rgba(255,255,255,0.35) 2.5px, transparent 2.5px),
+    radial-gradient(circle at 16% 50%, rgba(255,255,255,0.35) 0, rgba(255,255,255,0.35) 2.5px, transparent 2.5px),
+    radial-gradient(circle at 84% 50%, rgba(255,255,255,0.35) 0, rgba(255,255,255,0.35) 2.5px, transparent 2.5px),
+    var(--vermillion);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow:
+    0 0 0 5px rgba(194,59,42,0.12),
+    0 0 0 10px rgba(194,59,42,0.05),
+    inset 0 0 0 1.5px rgba(255,255,255,0.25);
+}
+.feature-card h4 {
+  font-size: 1.15rem;
+  color: var(--ink);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.feature-card p {
+  font-size: 0.88rem;
+  color: var(--ink-wash);
+  line-height: 1.7;
+}
+
+/* ============================================
+   针法技艺
+   ============================================ */
+.section-stitches {
+  background: linear-gradient(180deg, var(--paper-dark) 0%, var(--paper) 50%, var(--paper-dark) 100%);
+}
+
+.stitches-intro {
+  text-align: center;
+  max-width: 720px;
+  margin: -30px auto 48px;
+  color: var(--ink-wash);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  letter-spacing: 1px;
+}
+
+.stitches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.stitch-card {
+  display: flex;
+  gap: 18px;
+  padding: 28px 24px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s var(--ease);
+  border: 1px solid rgba(184,148,75,0.08);
+  align-items: flex-start;
+}
+.stitch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
+}
+
+.stitch-card .stitch-icon {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 10px 10px, rgba(184,148,75,0.22) 0, rgba(184,148,75,0.22) 2px, transparent 2px),
+    radial-gradient(circle at calc(100% - 10px) 10px, rgba(184,148,75,0.22) 0, rgba(184,148,75,0.22) 2px, transparent 2px),
+    radial-gradient(circle at 10px calc(100% - 10px), rgba(184,148,75,0.22) 0, rgba(184,148,75,0.22) 2px, transparent 2px),
+    radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), rgba(184,148,75,0.22) 0, rgba(184,148,75,0.22) 2px, transparent 2px),
+    linear-gradient(135deg, var(--paper), var(--paper-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--vermillion);
+  transition: 0.4s;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(184,148,75,0.08);
+}
+/* 方块四角装饰回纹角 */
+.stitch-card .stitch-icon::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border: 1px dashed rgba(184,148,75,0.1);
+  border-radius: 8px;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.stitch-card .stitch-icon::after {
+  content: '';
+  position: absolute;
+  width: 8px; height: 8px;
+  background: transparent;
+  border-top: 1.5px solid rgba(184,148,75,0.2);
+  border-right: 1.5px solid rgba(184,148,75,0.2);
+  top: -3px; right: -3px;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.stitch-card:hover .stitch-icon {
+  background:
+    radial-gradient(circle at 10px 10px, rgba(255,255,255,0.4) 0, rgba(255,255,255,0.4) 2px, transparent 2px),
+    radial-gradient(circle at calc(100% - 10px) 10px, rgba(255,255,255,0.4) 0, rgba(255,255,255,0.4) 2px, transparent 2px),
+    radial-gradient(circle at 10px calc(100% - 10px), rgba(255,255,255,0.4) 0, rgba(255,255,255,0.4) 2px, transparent 2px),
+    radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), rgba(255,255,255,0.4) 0, rgba(255,255,255,0.4) 2px, transparent 2px),
+    var(--vermillion);
+  color: #fff;
+  box-shadow:
+    0 0 0 3px rgba(194,59,42,0.15),
+    inset 0 0 0 1px rgba(255,255,255,0.2);
+}
+.stitch-card:hover .stitch-icon::before {
+  border-color: rgba(255,255,255,0.2);
+}
+.stitch-card:hover .stitch-icon::after {
+  border-color: rgba(255,255,255,0.4);
+  top: -4px; right: -4px;
+}
+
+.stitch-card .stitch-info h4 {
+  font-size: 1.05rem;
+  color: var(--ink);
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+.stitch-card .stitch-info .stitch-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--gold);
+  padding: 1px 10px;
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.stitch-card .stitch-info p {
+  font-size: 0.85rem;
+  color: var(--ink-wash);
+  line-height: 1.7;
+}
+
+/* ============================================
+   庆阳五绝
+   ============================================ */
+.wujue-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.wujue-card {
+  text-align: center;
+  padding: 32px 16px 24px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s var(--ease);
+  border: 1px solid rgba(184,148,75,0.08);
+}
+.wujue-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
+}
+.wujue-card.highlight {
+  border-color: var(--vermillion-light);
+  background: linear-gradient(180deg, rgba(194,59,42,0.04), var(--white));
+}
+.wujue-card.highlight:hover {
+  border-color: var(--vermillion);
+  box-shadow: 0 8px 32px rgba(194,59,42,0.12);
+}
+
+.wujue-icon-wrap {
+  width: 52px; height: 52px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--paper), var(--paper-dark));
+  font-size: 1.3rem;
+  color: var(--vermillion);
+  transition: 0.4s;
+}
+.wujue-card:hover .wujue-icon-wrap {
+  background: var(--vermillion);
+  color: #fff;
+  transform: scale(1.1);
+}
+.wujue-card.highlight .wujue-icon-wrap {
+  background: var(--vermillion);
+  color: #fff;
+}
+
+.wujue-card h4 {
+  font-size: 1.05rem;
+  color: var(--ink);
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+.wujue-card p {
+  font-size: 0.82rem;
+  color: var(--ink-wash);
+  line-height: 1.7;
+}
+
+.wujue-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-wash);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.8;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+/* ============================================
+   传承人卡片
+   ============================================ */
+.masters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.master-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.5s var(--ease);
+  border: 1px solid rgba(184,148,75,0.1);
+  cursor: pointer;
+  position: relative;
+}
+.master-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
+}
+
+.master-card .card-img {
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+}
+.master-card .card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s;
+}
+.master-card:hover .card-img img { transform: scale(1.06); }
+
+.master-card .card-img .img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26,20,16,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.master-card:hover .card-img .img-overlay { opacity: 1; }
+.master-card .card-img .img-overlay span {
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  border: 2px solid var(--gold);
+  padding: 10px 30px;
+  border-radius: 40px;
+  font-weight: 600;
+}
+
+.master-card .card-body {
+  padding: 24px 28px 28px;
+}
+.master-card .card-body h4 {
+  font-size: 1.4rem;
+  color: var(--ink);
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+.master-card .card-body .role {
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-weight: 600;
+  display: block;
+  margin: 2px 0 10px;
+}
+.master-card .card-body p {
+  font-size: 0.92rem;
+  color: var(--ink-wash);
+  line-height: 1.7;
+}
+.master-card .card-body .card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--vermillion);
+  font-weight: 600;
+  margin-top: 12px;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  transition: gap 0.3s;
+}
+.master-card .card-body .card-link:hover { gap: 12px; }
+.master-card .card-body .card-link::after {
+  content: '';
+  display: block;
+  width: 0; height: 1.5px;
+  background: var(--vermillion);
+  transition: width 0.3s;
+}
+.master-card .card-body .card-link:hover::after { width: 30px; }
+
+/* ============================================
+   作品画廊
+   ============================================ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.gallery-item {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s;
+}
+.gallery-item:hover {
+  transform: scale(1.04);
+  z-index: 2;
+  box-shadow: var(--shadow-lg);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+.gallery-item:hover img { transform: scale(1.12); }
+
+/* 画廊分组分隔标题 */
+.gallery-divider {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+}
+.gallery-divider::before,
+.gallery-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* 灯箱 */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10,8,5,0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s;
+  cursor: zoom-out;
+}
+.lightbox.active { opacity: 1; visibility: visible; }
+.lightbox img {
+  max-width: 88vw;
+  max-height: 88vh;
+  border-radius: 8px;
+  border: 3px solid rgba(184,148,75,0.4);
+  box-shadow: 0 0 80px rgba(0,0,0,0.5);
+}
+.lightbox .close {
+  position: absolute;
+  top: 28px;
+  right: 36px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+.lightbox .close:hover { background: var(--vermillion); }
+
+/* ============================================
+   实践团专区 — 鹿望秦川
+   ============================================ */
+.team-block {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.team-brand {
+  text-align: center;
+  position: sticky;
+  top: 100px;
+}
+.team-brand .emblem {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--gold);
+  box-shadow: 0 0 40px rgba(184,148,75,0.2);
+  margin: 0 auto 20px;
+}
+.team-brand h3 {
+  font-size: 1.6rem;
+  color: #fff;
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+.team-brand .school {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  margin: 6px 0 10px;
+}
+.team-brand .motto {
+  font-style: italic;
+  color: var(--gold-light);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.team-content {
+  color: rgba(255,255,255,0.8);
+}
+.team-content h4 {
+  font-size: 1.2rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.team-content p {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+.team-content .tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 24px;
+}
+.team-content .tag-row span {
+  padding: 5px 16px;
+  border: 1px solid rgba(212,185,106,0.35);
+  border-radius: 30px;
+  font-size: 0.82rem;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+  transition: 0.3s;
+}
+.team-content .tag-row span:hover {
+  background: rgba(212,185,106,0.12);
+  border-color: var(--gold);
+}
+
+.action-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+.action-card {
+  text-align: center;
+  padding: 22px 12px;
+  background: rgba(255,255,255,0.04);
+  border-radius: var(--radius-md);
+  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.action-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(212,185,106,0.3);
+}
+.action-card i {
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.action-card h5 {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.action-card small {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* 二维码区域 */
+.qr-section {
+  margin-top: 36px;
+  padding: 28px;
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(212,185,106,0.15);
+  text-align: center;
+}
+.qr-section h5 {
+  font-size: 1.1rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.qr-section > p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+.qr-img-wrap {
+  max-width: 360px;
+  margin: 0 auto 16px;
+  background: #fff;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.qr-img-wrap img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+.qr-labels {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.qr-labels span {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 1px;
+}
+.qr-labels span i {
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   名言金句
+   ============================================ */
+.quote-block {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  padding: 40px 0;
+}
+.quote-block .quote-mark {
+  font-size: 7rem;
+  line-height: 0.5;
+  color: var(--gold);
+  opacity: 0.2;
+  font-family: Georgia, serif;
+  display: block;
+}
+.quote-block blockquote {
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  line-height: 1.7;
+  margin: -10px 0 20px;
+}
+.quote-block cite {
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  opacity: 0.55;
+  font-style: normal;
+}
+
+/* ============================================
+   页脚
+   ============================================ */
+.footer {
+  background: var(--ink);
+  color: rgba(253,250,244,0.55);
+  padding: 56px 0 28px;
+  border-top: 4px solid var(--gold);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 36px;
+}
+
+.footer-brand h4 {
+  font-size: 1.4rem;
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
+.footer-brand p {
+  font-size: 0.88rem;
+  max-width: 300px;
+  line-height: 1.8;
+}
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.footer-social a {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.4);
+}
+.footer-social a:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink);
+  transform: translateY(-3px);
+}
+
+.footer-col h5 {
+  color: #fff;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+.footer-col li { margin-bottom: 8px; }
+.footer-col li a {
+  font-size: 0.88rem;
+  transition: 0.3s;
+}
+.footer-col li a:hover {
+  color: var(--gold);
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+/* ============================================
+   回到顶部
+   ============================================ */
+.back-top {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--vermillion);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s;
+  border: none;
+  box-shadow: 0 4px 16px rgba(194,59,42,0.3);
+  font-size: 1.1rem;
+}
+.back-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+.back-top:hover {
+  background: var(--gold);
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   副页专属样式 — 曹苑春 / 刘云帆展馆
+   ============================================ */
+
+/* 标签行（浅色版） */
+.tag-row-light {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+.tag-row-light span {
+  padding: 5px 16px;
+  border: 1px solid rgba(184,148,75,0.35);
+  border-radius: 30px;
+  font-size: 0.82rem;
+  letter-spacing: 1px;
+  color: var(--gold);
+  transition: 0.3s;
+}
+.tag-row-light span:hover {
+  background: rgba(184,148,75,0.12);
+  border-color: var(--gold);
+}
+
+/* 艺术家介绍框 */
+.artist-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.artist-frame img {
+  aspect-ratio: 3/4;
+}
+
+/* 绣艺人生时间线 */
+.timeline-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.timeline-card {
+  padding: 28px 24px;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(184,148,75,0.08);
+  transition: all 0.4s var(--ease);
+}
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
+}
+.timeline-card .tl-year {
+  font-size: 0.85rem;
+  color: var(--vermillion);
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  display: inline-flex;
+  padding: 3px 14px;
+  border: 1px solid var(--vermillion-light);
+  border-radius: 20px;
+  background: rgba(194,59,42,0.04);
+}
+.timeline-card .tl-content h4 {
+  font-size: 1.1rem;
+  color: var(--ink);
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.timeline-card .tl-content p {
+  font-size: 0.92rem;
+  color: var(--ink-wash);
+  line-height: 1.8;
+}
+
+/* 匠心之作网格 */
+.masterwork-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.masterwork-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.5s var(--ease);
+  border: 1px solid rgba(184,148,75,0.1);
+}
+.masterwork-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
+}
+.masterwork-card.featured {
+  grid-column: 1 / 3;
+  display: flex;
+  flex-direction: row;
+}
+.masterwork-card.featured .mw-img {
+  width: 55%;
+  height: 280px;
+  flex-shrink: 0;
+}
+.masterwork-card.featured .mw-body {
+  width: 45%;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.masterwork-card .mw-img {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+.masterwork-card .mw-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s;
+}
+.masterwork-card:hover .mw-img img {
+  transform: scale(1.06);
+}
+.masterwork-card .mw-img .mw-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26,20,16,0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.masterwork-card:hover .mw-img .mw-overlay {
+  opacity: 1;
+}
+.mw-overlay .mw-title {
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  font-weight: 700;
+}
+.mw-overlay .mw-desc {
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-top: 6px;
+}
+
+.masterwork-card .mw-body {
+  padding: 20px 24px 24px;
+}
+.masterwork-card .mw-body h4 {
+  font-size: 1.3rem;
+  color: var(--ink);
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+.masterwork-card .mw-body .mw-tag {
+  font-size: 0.78rem;
+  color: var(--gold);
+  padding: 2px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin: 4px 0 10px;
+}
+.masterwork-card .mw-body p {
+  font-size: 0.92rem;
+  color: var(--ink-wash);
+  line-height: 1.8;
+}
+
+/* 副页画廊 — 5列密集排列 */
+.gallery-grid-sub {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* 金句区深色版 */
+.quote-section-sub {
+  background: linear-gradient(180deg, #1a1410, #2c2018);
+  color: #fff;
+}
+.quote-section-sub .quote-block blockquote {
+  color: #fff;
+}
+.quote-section-sub .quote-block cite {
+  color: var(--gold-light);
+}
+
+/* 3D 数字展演板块 */
+.exhibit3d-section {
+  background: linear-gradient(180deg, #1a1410 0%, #2c2018 40%, #1a1410 100%);
+}
+.exhibit3d-section .section-header .eyebrow { color: var(--gold-light); }
+.exhibit3d-section .section-header h2 { color: #f4ecd8; }
+.exhibit3d-section .section-header .subtitle { color: rgba(244,236,216,0.6); }
+
+.exhibit3d-intro {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.exhibit3d-intro p {
+  font-size: 0.95rem;
+  color: rgba(244,236,216,0.8);
+  line-height: 2;
+  max-width: 720px;
+  margin: 0 auto;
+  letter-spacing: 1px;
+}
+.exhibit3d-intro .accent {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.exhibit3d-frame-wrap {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 2px solid rgba(212,175,55,0.25);
+  box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+  background: #0e0a08;
+}
+.exhibit3d-iframe {
+  width: 100%;
+  height: 520px;
+  display: block;
+  border: none;
+}
+.exhibit3d-fullscreen {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(42,31,16,0.75);
+  border: 1px solid rgba(212,175,55,0.5);
+  color: #d4af37;
+  padding: 10px 22px;
+  font-size: 0.88rem;
+  letter-spacing: 2px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+.exhibit3d-fullscreen:hover {
+  background: rgba(212,175,55,0.2);
+  border-color: #d4af37;
+  transform: scale(1.04);
+}
+.exhibit3d-fullscreen i { margin-right: 6px; }
+
+/* 3D 全屏沉浸覆盖层 */
+.exhibit3d-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0e0a08;
+  display: none;
+  flex-direction: column;
+}
+.exhibit3d-overlay.active {
+  display: flex;
+}
+.exhibit3d-overlay-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10000;
+  background: rgba(42,31,16,0.75);
+  border: 1px solid rgba(212,175,55,0.5);
+  color: #d4af37;
+  padding: 10px 22px;
+  font-size: 0.88rem;
+  letter-spacing: 2px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(8px);
+}
+.exhibit3d-overlay-close:hover {
+  background: rgba(212,175,55,0.2);
+  border-color: #d4af37;
+}
+.exhibit3d-overlay-close i { margin-right: 6px; }
+.exhibit3d-overlay-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ============================================
+   响应式
+   ============================================ */
+@media (max-width: 1024px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-numbers { justify-content: center; }
+  .hero-visual .visual-ring { width: 240px; height: 240px; }
+  .hero-visual img { width: 190px; height: 190px; }
+  .intro-grid { grid-template-columns: 1fr; }
+  .intro-grid .image-frame { position: static; max-width: 500px; margin: 0 auto; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .stitches-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-block { grid-template-columns: 1fr; }
+  .team-brand { position: static; }
+  .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .gallery-grid-sub { grid-template-columns: repeat(3, 1fr); }
+  .wujue-grid { grid-template-columns: repeat(3, 1fr); }
+  .action-cards { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .qr-img-wrap { max-width: 300px; }
+  .timeline-section { grid-template-columns: 1fr; }
+  .masterwork-grid { grid-template-columns: repeat(2, 1fr); }
+  .masterwork-card.featured { grid-column: 1 / -1; }
+  .exhibit3d-iframe { height: 420px; }
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 70px; left: 0; right: 0;
+    flex-direction: column;
+    background: rgba(253,250,244,0.98);
+    padding: 20px;
+    gap: 14px;
+    border-bottom: 2px solid var(--gold);
+    box-shadow: var(--shadow-lg);
+  }
+  .nav-menu.open { display: flex; }
+  .nav-hamburger { display: flex; }
+
+  .hero-title { font-size: 2.8rem; }
+  .hero-title .char-big { font-size: 4rem; }
+  .hero-title .sub { font-size: 1.3rem; letter-spacing: 6px; }
+  .hero-numbers { gap: 20px; flex-wrap: wrap; }
+
+  .section-header h2 { font-size: 2rem; letter-spacing: 4px; }
+  .masters-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .stitches-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid-sub { grid-template-columns: repeat(2, 1fr); }
+  .wujue-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .masterwork-grid { grid-template-columns: 1fr; }
+  .masterwork-card.featured { grid-column: 1; flex-direction: column; }
+  .masterwork-card.featured .mw-img { width: 100%; height: 220px; }
+  .masterwork-card.featured .mw-body { width: 100%; }
+  .exhibit3d-iframe { height: 360px; }
+  .exhibit3d-fullscreen { bottom: 14px; right: 14px; padding: 8px 16px; font-size: 0.82rem; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .hero-title { font-size: 2.2rem; }
+  .hero-title .char-big { font-size: 3.2rem; }
+  .hero-numbers { flex-direction: column; gap: 12px; align-items: center; }
+  .features-grid { grid-template-columns: 1fr; }
+  .stitches-grid { grid-template-columns: 1fr; }
+  .stitch-card { flex-direction: column; align-items: center; text-align: center; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid-sub { grid-template-columns: repeat(2, 1fr); }
+  .wujue-grid { grid-template-columns: 1fr 1fr; }
+  .action-cards { grid-template-columns: 1fr 1fr; }
+  .btn { padding: 12px 24px; font-size: 0.88rem; }
+  .qr-section { padding: 20px 14px; }
+  .qr-labels { gap: 10px; }
+  .qr-labels span { font-size: 0.78rem; }
+}

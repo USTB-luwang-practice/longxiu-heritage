@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   非遗文化 · 传承之美
+  </title>
+  <!-- 使用 Google Font 提升字体质感 -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+  <!-- Font Awesome 图标库 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+  <style>
+
+        /* ========== 全局重置 & 基础 ========== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8b1a1a;
+            --primary-light: #b23b3b;
+            --primary-dark: #5c0e0e;
+            --gold: #c9a86c;
+            --gold-light: #e8d5a3;
+            --cream: #fdf8f0;
+            --warm-gray: #f5efe8;
+            --text-dark: #2c1810;
+            --text-soft: #4a3728;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+            --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.18);
+            --radius: 16px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', 'Inter', serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ========== 滚动条美化 ========== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--cream);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 20px;
+        }
+
+        /* ========== 导航栏 ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(253, 248, 240, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(201, 168, 108, 0.25);
+            transition: var(--transition);
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+        .navbar .logo i {
+            color: var(--gold);
+            font-size: 1.8rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        .nav-links a {
+            position: relative;
+            color: var(--text-soft);
+            transition: var(--transition);
+            padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2.5px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-toggle {
+            display: none;
+            font-size: 1.6rem;
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* ========== Hero 区域 ========== */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(165deg, var(--cream) 0%, #f5ede2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 168, 108, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: var(--primary-dark);
+            letter-spacing: 4px;
+        }
+        .hero-content h1 .highlight {
+            color: var(--gold);
+            position: relative;
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-soft);
+            margin: 24px 0 36px;
+            max-width: 480px;
+            line-height: 1.9;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--primary-dark);
+            padding: 6px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(201, 168, 108, 0.4);
+        }
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(139, 26, 26, 0.30);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(139, 26, 26, 0.40);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .hero-image .img-placeholder {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1/1;
+            background: linear-gradient(135deg, var(--gold-light), #dcc29e);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: rgba(139, 26, 26, 0.20);
+            box-shadow: 0 20px 60px rgba(201, 168, 108, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-image .img-placeholder::after {
+            content: '🎭';
+            font-size: 10rem;
+            opacity: 0.6;
+        }
+        .floating-tag {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(201, 168, 108, 0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+        .floating-tag:nth-child(2) {
+            top: 10%;
+            right: -5%;
+            animation-delay: 0.6s;
+        }
+        .floating-tag:nth-child(3) {
+            bottom: 15%;
+            left: -8%;
+            animation-delay: 1.2s;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-14px);
+            }
+        }
+
+        /* ========== Section 通用 ========== */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        .section-title h2 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: 2px;
+        }
+        .section-title h2 span {
+            color: var(--gold);
+        }
+        .section-title .subtitle {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 1rem;
+            color: var(--text-soft);
+            letter-spacing: 4px;
+            font-weight: 300;
+            position: relative;
+        }
+        .section-title .subtitle::before,
+        .section-title .subtitle::after {
+            content: '——';
+            color: var(--gold);
+            margin: 0 10px;
+        }
+
+        /* ========== 非遗项目卡片 ========== */
+        .projects {
+            background: var(--warm-gray);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(201, 168, 108, 0.12);
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        .project-card .card-img {
+            height: 220px;
+            background: linear-gradient(145deg, #e8dcc8, #d6c6ae);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: rgba(139, 26, 26, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .project-card .card-img .tag {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .project-card .card-body {
+            padding: 24px 24px 28px;
+        }
+        .project-card .card-body h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+        .project-card .card-body .origin {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .project-card .card-body p {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .project-card .card-body .learn-more {
+            display: inline-block;
+            margin-top: 16px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+        }
+        .project-card .card-body .learn-more:hover {
+            border-bottom-color: var(--gold);
+            color: var(--primary-dark);
+        }
+        .project-card .card-body .learn-more i {
+            margin-left: 6px;
+            font-size: 0.7rem;
+            transition: var(--transition);
+        }
+        .project-card .card-body .learn-more:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ========== 传承人 ========== */
+        .masters {
+            background: var(--cream);
+        }
+        .master-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+        }
+        .master-card {
+            text-align: center;
+            padding: 32px 20px;
+            border-radius: var(--radius);
+            background: #fff;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(201, 168, 108, 0.10);
+        }
+        .master-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .master-card .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, var(--gold-light), #b8a07c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.6rem;
+            color: rgba(139, 26, 26, 0.30);
+            border: 4px solid var(--gold);
+        }
+        .master-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        .master-card .title {
+            color: var(--gold);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+        .master-card .desc {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            line-height: 1.6;
+        }
+        .master-card .social {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+        .master-card .social a {
+            color: var(--text-soft);
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        .master-card .social a:hover {
+            color: var(--primary);
+        }
+
+        /* ========== 新闻动态 ========== */
+        .news {
+            background: var(--warm-gray);
+        }
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .news-item {
+            display: flex;
+            gap: 24px;
+            padding: 24px 28px;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 6px solid var(--gold);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .news-item:hover {
+            transform: translateX(6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .news-item .date {
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 0.9rem;
+            min-width: 80px;
+            font-feature-settings: "tnum";
+        }
+        .news-item .content {
+            flex: 1;
+        }
+        .news-item .content h4 {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+        }
+        .news-item .content p {
+            color: var(--text-soft);
+            font-size: 0.92rem;
+            margin-top: 2px;
+        }
+        .news-item .badge {
+            background: var(--gold-light);
+            color: var(--primary-dark);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* ========== 页脚 ========== */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.80);
+            padding: 60px 0 30px;
+        }
+        .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        .footer .brand p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-width: 320px;
+        }
+        .footer .brand .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .footer .brand .logo i {
+            font-size: 2rem;
+        }
+        .footer ul {
+            list-style: none;
+        }
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+        .footer ul a {
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        .footer ul a:hover {
+            color: var(--gold);
+            padding-left: 4px;
+        }
+        .footer .social-links {
+            display: flex;
+            gap: 14px;
+            margin-top: 8px;
+        }
+        .footer .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            transition: var(--transition);
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        .footer .social-links a:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+            transform: translateY(-4px);
+        }
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+            font-size: 0.85rem;
+            grid-column: 1 / -1;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-content .btn-group {
+                justify-content: center;
+            }
+            .hero-image .img-placeholder {
+                max-width: 380px;
+            }
+            .floating-tag {
+                display: none;
+            }
+            .footer .container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 16px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(253, 248, 240, 0.98);
+                backdrop-filter: blur(14px);
+                padding: 28px 32px;
+                border-bottom: 1px solid rgba(201, 168, 108, 0.2);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .hero {
+                padding: 140px 0 60px;
+            }
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .news-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .news-item .date {
+                min-width: unset;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                padding: 0 20px;
+            }
+            .btn {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
+            .master-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+  </style>
+ </head>
+ <body>
+  <!-- ============================== 导航栏 ============================== -->
+  <header class="navbar" id="navbar">
+   <div class="container">
+    <a class="logo" href="#">
+     <i class="fas fa-feather-alt">
+     </i>
+     非遗·传承
+    </a>
+    <button aria-label="切换导航" class="nav-toggle" id="navToggle">
+     <i class="fas fa-bars">
+     </i>
+    </button>
+    <ul class="nav-links" id="navLinks">
+     <li>
+      <a href="#hero">
+       首页
+      </a>
+     </li>
+     <li>
+      <a href="#projects">
+       非遗项目
+      </a>
+     </li>
+     <li>
+      <a href="#masters">
+       传承人
+      </a>
+     </li>
+     <li>
+      <a href="#news">
+       动态
+      </a>
+     </li>
+     <li>
+      <a href="#footer">
+       关于
+      </a>
+     </li>
+    </ul>
+   </div>
+  </header>
+  <!-- ============================== Hero ============================== -->
+  <section class="hero" id="hero">
+   <div class="container">
+    <div class="hero-content">
+     <span class="hero-badge">
+      <i class="fas fa-flag">
+      </i>
+      国家级非物质文化遗产
+     </span>
+     <h1>
+      守护
+      <span class="highlight">
+       千年
+      </span>
+      文脉
+      <br/>
+      传承
+      <span class="highlight">
+       东方
+      </span>
+      之美
+     </h1>
+     <p>
+      非物质文化遗产是民族记忆的活态载体，是祖先留给我们的珍贵礼物。
+                    每一门手艺、每一段曲调、每一个习俗，都承载着深厚的文化基因。
+     </p>
+     <div class="btn-group">
+      <a class="btn btn-primary" href="#projects">
+       <i class="fas fa-chevron-right">
+       </i>
+       探索非遗
+      </a>
+      <a class="btn btn-outline" href="#footer">
+       <i class="fas fa-heart">
+       </i>
+       支持我们
+      </a>
+     </div>
+    </div>
+    <div class="hero-image">
+     <div class="img-placeholder">
+     </div>
+     <span class="floating-tag">
+      <i class="fas fa-palette">
+      </i>
+      匠心技艺
+     </span>
+     <span class="floating-tag">
+      <i class="fas fa-music">
+      </i>
+      传统戏剧
+     </span>
+     <span class="floating-tag">
+      <i class="fas fa-dragon">
+      </i>
+      民间传说
+     </span>
+    </div>
+   </div>
+  </section>
+  <!-- ============================== 非遗项目 ============================== -->
+  <section class="projects" id="projects">
+   <div class="container">
+    <div class="section-title">
+     <h2>
+      瑰宝 ·
+      <span>
+       非遗项目
+      </span>
+     </h2>
+     <span class="subtitle">
+      千年技艺 薪火相传
+     </span>
+    </div>
+    <div class="project-grid">
+     <!-- 卡片 1 -->
+     <div class="project-card">
+      <div class="card-img" style="background: linear-gradient(145deg, #f0e4d0, #dcc6aa);">
+       <span class="tag">
+        人类非遗
+       </span>
+       🎭
+      </div>
+      <div class="card-body">
+       <h3>
+        昆曲
+       </h3>
+       <div class="origin">
+        <i class="fas fa-map-pin">
+        </i>
+        江苏 · 苏州
+       </div>
+       <p>
+        昆曲是中国最古老的戏曲剧种之一，被誉为「百戏之祖」，以婉转的唱腔和优雅的身段闻名于世。
+       </p>
+       <a class="learn-more" href="#">
+        了解详情
+        <i class="fas fa-arrow-right">
+        </i>
+       </a>
+      </div>
+     </div>
+     <!-- 卡片 2 -->
+     <div class="project-card">
+      <div class="card-img" style="background: linear-gradient(145deg, #dde8e8, #bccfd0);">
+       <span class="tag">
+        国家级
+       </span>
+       🏮
+      </div>
+      <div class="card-body">
+       <h3>
+        宣纸制作技艺
+       </h3>
+       <div class="origin">
+        <i class="fas fa-map-pin">
+        </i>
+        安徽 · 宣城
+       </div>
+       <p>
+        宣纸被誉为「纸寿千年」，其制作技艺复杂精妙，是中华书画艺术的重要载体。
+       </p>
+       <a class="learn-more" href="#">
+        了解详情
+        <i class="fas fa-arrow-right">
+        </i>
+       </a>
+      </div>
+     </div>
+     <!-- 卡片 3 -->
+     <div class="project-card">
+      <div class="card-img" style="background: linear-gradient(145deg, #f0dcc8, #dbbd9e);">
+       <span class="tag">
+        国家级
+       </span>
+       🏺
+      </div>
+      <div class="card-body">
+       <h3>
+        景德镇手工制瓷
+       </h3>
+       <div class="origin">
+        <i class="fas fa-map-pin">
+        </i>
+        江西 · 景德镇
+       </div>
+       <p>
+        景德镇瓷器以「白如玉、明如镜、薄如纸、声如磬」著称，千年窑火不断，匠心永续。
+       </p>
+       <a class="learn-more" href="#">
+        了解详情
+        <i class="fas fa-arrow-right">
+        </i>
+       </a>
+      </div>
+     </div>
+     <!-- 卡片 4 -->
+     <div class="project-card">
+      <div class="card-img" style="background: linear-gradient(145deg, #e5d4c8, #ccb8a8);">
+       <span class="tag">
+        国家级
+       </span>
+       🪕
+      </div>
+      <div class="card-body">
+       <h3>
+        古琴艺术
+       </h3>
+       <div class="origin">
+        <i class="fas fa-map-pin">
+        </i>
+        全国 · 传承
+       </div>
+       <p>
+        古琴是中国最古老的弹拨乐器之一，承载着「天人合一」的哲学思想，音色深沉而悠远。
+       </p>
+       <a class="learn-more" href="#">
+        了解详情
+        <i class="fas fa-arrow-right">
+        </i>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- ============================== 传承人 ============================== -->
+  <section class="masters" id="masters">
+   <div class="container">
+    <div class="section-title">
+     <h2>
+      守艺人 ·
+      <span>
+       传承人
+      </span>
+     </h2>
+     <span class="subtitle">
+      一生一事 匠心不渝
+     </span>
+    </div>
+    <div class="master-grid">
+     <div class="master-card">
+      <div class="avatar">
+       👩‍🎨
+      </div>
+      <h4>
+       王秀英
+      </h4>
+      <div class="title">
+       国家级非遗传承人 · 苏绣
+      </div>
+      <p class="desc">
+       从事苏绣艺术四十余年，将传统针法与当代审美相融合，作品被多家博物馆收藏。
+      </p>
+      <div class="social">
+       <a href="#">
+        <i class="fab fa-weibo">
+        </i>
+       </a>
+       <a href="#">
+        <i class="fas fa-globe">
+        </i>
+       </a>
+      </div>
+     </div>
+     <div class="master-card">
+      <div class="avatar">
+       🧑‍🎨
+      </div>
+      <h4>
+       陈志强
+      </h4>
+      <div class="title">
+       省级非遗传承人 · 木版年画
+      </div>
+      <p class="desc">
+       坚守传统木版年画技艺，恢复多种失传的套色技法，让民间艺术重焕生机。
+      </p>
+      <div class="social">
+       <a href="#">
+        <i class="fab fa-weibo">
+        </i>
+       </a>
+       <a href="#">
+        <i class="fas fa-globe">
+        </i>
+       </a>
+      </div>
+     </div>
+     <div class="master-card">
+      <div class="avatar">
+       🧑‍🍳
+      </div>
+      <h4>
+       李德明
+      </h4>
+      <div class="title">
+       市级非遗传承人 · 传统糕点
+      </div>
+      <p class="desc">
+       传承百年老字号糕点制作手艺，坚持古法手工，守护舌尖上的非遗记忆。
+      </p>
+      <div class="social">
+       <a href="#">
+        <i class="fab fa-weibo">
+        </i>
+       </a>
+       <a href="#">
+        <i class="fas fa-globe">
+        </i>
+       </a>
+      </div>
+     </div>
+     <div class="master-card">
+      <div class="avatar">
+       👨‍🏫
+      </div>
+      <h4>
+       赵文华
+      </h4>
+      <div class="title">
+       国家级非遗传承人 · 京剧
+      </div>
+      <p class="desc">
+       京剧老生名家，致力于京剧艺术的传承与推广，培养了大批青年戏曲人才。
+      </p>
+      <div class="social">
+       <a href="#">
+        <i class="fab fa-weibo">
+        </i>
+       </a>
+       <a href="#">
+        <i class="fas fa-globe">
+        </i>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- ============================== 新闻动态 ============================== -->
+  <section class="news" id="news">
+   <div class="container">
+    <div class="section-title">
+     <h2>
+      动态 ·
+      <span>
+       非遗资讯
+      </span>
+     </h2>
+     <span class="subtitle">
+      关注非遗 传承不息
+     </span>
+    </div>
+    <div class="news-list">
+     <div class="news-item">
+      <span class="date">
+       2026.07.18
+      </span>
+      <div class="content">
+       <h4>
+        「非遗进校园」活动在全国百所高校启动
+       </h4>
+       <p>
+        让青年学子近距离感受非遗魅力，培养新一代非遗传承力量。
+       </p>
+      </div>
+      <span class="badge">
+       最新
+      </span>
+     </div>
+     <div class="news-item">
+      <span class="date">
+       2026.07.12
+      </span>
+      <div class="content">
+       <h4>
+        中国非遗项目总数位居世界第一
+       </h4>
+       <p>
+        截至目前，我国共有43个项目列入联合国教科文组织非遗名录，总数居全球首位。
+       </p>
+      </div>
+      <span class="badge">
+       热点
+      </span>
+     </div>
+     <div class="news-item">
+      <span class="date">
+       2026.07.05
+      </span>
+      <div class="content">
+       <h4>
+        非遗数字博物馆上线，足不出户领略千年文化
+       </h4>
+       <p>
+        通过VR、AR等新技术手段，让非遗文化以数字化形式走进千家万户。
+       </p>
+      </div>
+      <span class="badge">
+       推荐
+      </span>
+     </div>
+     <div class="news-item">
+      <span class="date">
+       2026.06.28
+      </span>
+      <div class="content">
+       <h4>
+        传统节日「端午」非遗民俗活动精彩纷呈
+       </h4>
+       <p>
+        全国各地举办赛龙舟、包粽子、挂艾草等民俗活动，弘扬传统文化。
+       </p>
+      </div>
+      <span class="badge">
+       活动
+      </span>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- ============================== 页脚 ============================== -->
+  <footer class="footer" id="footer">
+   <div class="container">
+    <!-- 品牌 -->
+    <div class="brand">
+     <div class="logo">
+      <i class="fas fa-feather-alt">
+      </i>
+      非遗·传承
+     </div>
+     <p>
+      致力于非物质文化遗产的保护、传承与推广。
+                    让古老的文化在新时代绽放新的光彩。
+     </p>
+     <div class="social-links">
+      <a href="#">
+       <i class="fab fa-weixin">
+       </i>
+      </a>
+      <a href="#">
+       <i class="fab fa-weibo">
+       </i>
+      </a>
+      <a href="#">
+       <i class="fab fa-bilibili">
+       </i>
+      </a>
+      <a href="#">
+       <i class="fab fa-youtube">
+       </i>
+      </a>
+     </div>
+    </div>
+    <!-- 快速链接 -->
+    <div>
+     <h4>
+      快速导航
+     </h4>
+     <ul>
+      <li>
+       <a href="#hero">
+        首页
+       </a>
+      </li>
+      <li>
+       <a href="#projects">
+        非遗项目
+       </a>
+      </li>
+      <li>
+       <a href="#masters">
+        传承人
+       </a>
+      </li>
+      <li>
+       <a href="#news">
+        动态
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- 非遗分类 -->
+    <div>
+     <h4>
+      非遗分类
+     </h4>
+     <ul>
+      <li>
+       <a href="#">
+        传统技艺
+       </a>
+      </li>
+      <li>
+       <a href="#">
+        传统戏剧
+       </a>
+      </li>
+      <li>
+       <a href="#">
+        民间文学
+       </a>
+      </li>
+      <li>
+       <a href="#">
+        传统美术
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- 关于 -->
+    <div>
+     <h4>
+      关于我们
+     </h4>
+     <ul>
+      <li>
+       <a href="#">
+        项目简介
+       </a>
+      </li>
+      <li>
+       <a href="#">
+        合作机构
+       </a>
+      </li>
+      <li>
+       <a href="#">
+        志愿者招募
+       </a>
+      </li>
+      <li>
+       <a href="#">
+        联系我们
+       </a>
+      </li>
+     </ul>
+    </div>
+    <!-- 版权 -->
+    <div class="footer-bottom">
+     © 2026 非遗·传承 ｜ 守护文化根脉，共筑精神家园
+    </div>
+   </div>
+  </footer>
+  <!-- ============================== JavaScript ============================== -->
+  <script>
+
+        (function() {
+            // —— 移动端导航切换 ——
+            const toggleBtn = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+
+            toggleBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.className = 'fas fa-times';
+                } else {
+                    icon.className = 'fas fa-bars';
+                }
+            });
+
+            // 点击导航链接后自动关闭（移动端）
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    const icon = toggleBtn.querySelector('i');
+                    if (icon) icon.className = 'fas fa-bars';
+                });
+            });
+
+            // —— 滚动时导航栏阴影加深 ——
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 40) {
+                    navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.08)';
+                    navbar.style.borderBottomColor = 'rgba(201,168,108,0.35)';
+                } else {
+                    navbar.style.boxShadow = 'none';
+                    navbar.style.borderBottomColor = 'rgba(201,168,108,0.25)';
+                }
+            });
+
+            // —— 卡片点击 "了解详情" 平滑提示（演示交互） ——
+            document.querySelectorAll('.learn-more').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const title = this.closest('.card-body').querySelector('h3')?.textContent || '该项目';
+                    alert('✨ 您正在了解「' + title.trim() + '」的更多信息。\n（此页面为学习展示，实际可跳转至详情页）');
+                });
+            });
+
+            // —— 新闻条目点击反馈 ——
+            document.querySelectorAll('.news-item').forEach(item => {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', function() {
+                    const headline = this.querySelector('h4')?.textContent || '资讯';
+                    alert('📰 您点击了：「' + headline.trim() + '」\n（此处可跳转至新闻详情页）');
+                });
+            });
+
+            // —— 传承人卡片点击反馈 ——
+            document.querySelectorAll('.master-card').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', function() {
+                    const name = this.querySelector('h4')?.textContent || '传承人';
+                    alert('👤 您点击了「' + name.trim() + '」的档案\n（此处可查看传承人详细介绍）');
+                });
+            });
+
+            console.log('✅ 非遗文化宣传页面加载完成 — 传承之美，历久弥新');
+        })();
+
+  </script>
+ </body>
+</html>
