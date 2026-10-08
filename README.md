@@ -19,7 +19,7 @@
 
 ## 在线访问
 
-**https://changguandaoren.github.io/longxiu-heritage/**
+**https://USTB-luwang-practice.github.io/longxiu-heritage/**
 
 本项目通过 GitHub Pages 发布，使用 GitHub Pages 默认域名访问。
 
